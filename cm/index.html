@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+<body>
+  <div class="add remove toggle">
+    open console!
+  </div>
+  <div class="add remove toggle">
+    open console!
+  </div>
+  <script src="cm.js"></script>
+  <script>
+    // Пример работы
+
+    cm.registerMethod('hasClass', function(cl) {
+      const result = [];
+      this.el.forEach(node => {
+        result.push(Boolean(~node.classList.value.search(cl)));
+      });
+      return result.length > 1 ? result : result[0];
+    });
+
+    console.log(cm('.add'));
+    console.log(cm('.add').addClass('new').removeClass('remove'));
+    console.log(cm('.add').addClass('new').hasClass('toggle'));
+    console.log(cm('.add', true).addClass('one').hasClass('one'));
+    console.log(cm('.one').el[0]);
+  </script>
+</body>
+</html>
